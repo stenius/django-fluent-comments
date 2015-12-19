@@ -1,7 +1,11 @@
 import warnings
-from django.contrib.sites.models import get_current_site
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import smart_str
+try:
+    from django.contrib.sites.models import get_current_site
+except ImportError:
+    from django.contrib.sites.shortcuts import get_current_site
+
 from fluent_comments import appsettings
 from .compat import BASE_APP
 
